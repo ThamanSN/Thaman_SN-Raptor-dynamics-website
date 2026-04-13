@@ -10,6 +10,8 @@ type HeroSectionProps = {
 
 export function HeroSection({ onLaunch }: HeroSectionProps) {
   const clubLogoSrc = `${import.meta.env.BASE_URL}club-logo.jpeg.jpeg`
+  const heroBadges = ['NIE MYSURU', 'VTU AUTONOMOUS', 'EST. 2026', 'SYSTEMS ONLINE']
+  const tickerText = 'RAPTOR DYNAMICS × UAV SYSTEMS × AERODYNAMICS × AI-BASED DRONES × NIE MYSURU × '
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [audioEnabled, setAudioEnabled] = useState(false)
   const audioContextRef = useRef<AudioContext | null>(null)
@@ -144,6 +146,22 @@ export function HeroSection({ onLaunch }: HeroSectionProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.62, duration: 0.65 }}
+          className="mt-6 flex flex-wrap justify-center gap-2.5"
+        >
+          {heroBadges.map((badge) => (
+            <span
+              key={badge}
+              className="rounded-full border border-cyan-300/35 bg-[#081324]/75 px-4 py-1.5 font-display text-[11px] uppercase tracking-[0.2em] text-cyan-100"
+            >
+              {badge}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.68, duration: 0.7 }}
           className="mt-12 flex flex-wrap items-center justify-center gap-4"
         >
@@ -154,6 +172,18 @@ export function HeroSection({ onLaunch }: HeroSectionProps) {
           <GlowButton variant="ghost" onClick={toggleAmbient}>
             {audioEnabled ? 'Mute Ambience' : 'Enable Ambience'}
           </GlowButton>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.85, duration: 0.8 }}
+          className="hero-ticker-wrap mt-10 w-full max-w-5xl overflow-hidden rounded-full border border-cyan-300/30 bg-[#071226]/70"
+        >
+          <div className="hero-ticker-track font-display text-xs uppercase tracking-[0.22em] text-cyan-100/85">
+            <span>{tickerText}</span>
+            <span>{tickerText}</span>
+          </div>
         </motion.div>
       </motion.div>
     </section>

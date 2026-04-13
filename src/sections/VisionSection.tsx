@@ -8,8 +8,8 @@ export function VisionSection() {
     <SectionShell id="vision">
       <SectionTitle
         eyebrow="Vision"
-        title="Cinematic Direction"
-        description="A clear innovation mandate aligned with aerospace-grade impact."
+        title="Student-Driven UAV Innovation"
+        description="A mission-led direction focused on autonomous flight systems, real deployments, and interdisciplinary engineering excellence."
       />
 
       <article className="vision-grid-wrap glass relative overflow-hidden rounded-3xl border border-cyan-300/35 p-10 text-center">

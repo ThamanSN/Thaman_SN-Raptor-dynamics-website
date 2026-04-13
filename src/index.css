@@ -217,7 +217,7 @@ body::after {
 .glitch-text {
   position: relative;
   text-shadow: 0 0 12px rgba(85, 230, 255, 0.32);
-  animation: glitchShift 4.8s infinite;
+  animation: none;
 }
 
 .heading-ripple {
@@ -232,20 +232,25 @@ body::after {
   inset: 0;
   color: transparent;
   background: linear-gradient(
-    100deg,
-    rgba(85, 230, 255, 0) 0%,
-    rgba(85, 230, 255, 0) 35%,
-    rgba(255, 179, 71, 0.95) 50%,
-    rgba(85, 230, 255, 0) 65%,
-    rgba(85, 230, 255, 0) 100%
+    102deg,
+    rgba(255, 193, 94, 0) 0%,
+    rgba(255, 193, 94, 0) 28%,
+    rgba(255, 225, 160, 0.98) 46%,
+    rgba(255, 180, 72, 0.98) 52%,
+    rgba(255, 225, 160, 0.98) 58%,
+    rgba(255, 193, 94, 0) 72%,
+    rgba(255, 193, 94, 0) 100%
   );
-  background-size: 260% 100%;
+  background-size: 240% 100%;
   background-position: -135% 50%;
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(255, 196, 90, 0.75);
+  filter: drop-shadow(0 0 8px rgba(255, 168, 52, 0.45));
   pointer-events: none;
-  mix-blend-mode: screen;
-  animation: headingRipple 3.8s linear infinite;
+  mix-blend-mode: normal;
+  animation: headingRipple 3.2s linear infinite;
 }
 
 .scan-link {
@@ -335,6 +340,18 @@ body::after {
   white-space: nowrap;
 }
 
+.hero-ticker-wrap {
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.hero-ticker-track {
+  display: inline-flex;
+  gap: 2.2rem;
+  min-width: max-content;
+  padding: 11px 0;
+  animation: heroTickerScroll 20s linear infinite;
+}
+
 .hero-title-glow {
   position: relative;
   display: inline-block;
@@ -418,6 +435,15 @@ body::after {
   }
 }
 
+@keyframes heroTickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes glitchShift {
   0%,
   92%,
@@ -438,21 +464,21 @@ body::after {
 @keyframes headingRipple {
   0% {
     background-position: -135% 50%;
-    opacity: 0.18;
+    opacity: 0.16;
   }
   15% {
-    opacity: 0.7;
+    opacity: 0.68;
   }
   50% {
     background-position: 0% 50%;
-    opacity: 0.95;
+    opacity: 0.96;
   }
   85% {
-    opacity: 0.72;
+    opacity: 0.7;
   }
   100% {
     background-position: 135% 50%;
-    opacity: 0.2;
+    opacity: 0.16;
   }
 }
 

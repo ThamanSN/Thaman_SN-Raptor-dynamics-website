@@ -23,7 +23,7 @@ export const pdfStructuredContent = {
   about:
     'RAPTOR DYNAMICS is a student-driven drone technology club focused on designing, building, and deploying unmanned aerial systems (UAVs). The club provides hands-on learning in aerodynamics, flight control, embedded systems, and AI applications. Members work on real-time projects, participate in competitions, and develop innovative drone solutions for surveillance, agriculture, mapping, and disaster management. The club promotes interdisciplinary collaboration, technical excellence, and innovation, preparing students to become industry-ready engineers and leaders in aerial robotics.',
   vision:
-    'To lead innovation in drone technology through excellence in design, research, and real-world applications.',
+    'To be a leading hub of drone innovation and aerial robotics where students design, build, and deploy mission-ready UAV systems, advancing autonomous flight through interdisciplinary collaboration, research excellence, and real-world impact across agriculture, surveillance, mapping, and disaster response.',
   mission: [
     'Design, build, and innovate UAV systems through immersive hands-on learning.',
     'Develop interdisciplinary expertise in aerodynamics, electronics, and AI systems.',
