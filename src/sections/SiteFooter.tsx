@@ -2,27 +2,23 @@ export function SiteFooter() {
   const clubLogoSrc = `${import.meta.env.BASE_URL}club-logo.jpeg.jpeg`
   const nieLogoSrc = `${import.meta.env.BASE_URL}nie-logo.svg`
   const quickLinks = [
+    { href: '#', label: 'Home' },
     { href: '#about', label: 'About Us' },
     { href: '#vision', label: 'Vision & Mission' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#join', label: 'Join Club' },
+    { href: '#mission', label: 'Projects' },
+    { href: '#objectives', label: 'Applications' },
+    { href: '#team', label: 'Events' },
   ]
-  const committeeLinks = [
-    { href: '#team', label: 'Patrons' },
-    { href: '#team', label: 'Chief Advisors' },
-    { href: '#team', label: 'Faculty Advisors' },
-    { href: '#team', label: 'Office Bearers' },
-  ]
-  const connectLinks = [
-    { href: 'https://instagram.com', label: 'Instagram' },
-    { href: 'https://linkedin.com', label: 'LinkedIn' },
-    { href: 'https://youtube.com', label: 'YouTube' },
-    { href: '#join', label: 'Contact Us' },
+  const getInvolvedLinks = [
+    { href: '#join', label: 'Join the Club' },
+    { href: '#team', label: 'Upcoming Events' },
+    { href: '#mission', label: 'Competitions' },
+    { href: '#team', label: 'Meet the Team' },
   ]
 
   return (
     <footer className="relative z-10 border-t border-cyan-300/20 bg-black/30 px-5 py-10 backdrop-blur-md sm:px-8 lg:px-12">
-      <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1.35fr_1.15fr_2fr]">
         <div>
           <img
             src={clubLogoSrc}
@@ -30,54 +26,41 @@ export function SiteFooter() {
             className="mb-2 h-10 w-10 rounded-md border border-cyan-300/35 bg-black/35 p-1"
           />
           <p className="font-display text-base uppercase tracking-[0.22em] text-cyan-200">Raptor Dynamics</p>
-          <p className="text-sm text-cyan-100/70">The National Institute of Engineering, Mysore</p>
-          <p className="mt-1 font-display text-[11px] uppercase tracking-[0.3em] text-amber-200/90">
+          <p className="mt-1 font-display text-[11px] uppercase tracking-[0.3em] text-cyan-100/90">
             Innovate. Integrate. Elevate.
           </p>
-          <div className="mt-4 flex items-center gap-3">
-            <img src={nieLogoSrc} alt="NIE Mysuru" className="h-8 w-auto rounded bg-white/95 p-1" />
-            <p className="font-display text-[10px] uppercase tracking-[0.24em] text-cyan-100/75">
-              Club Active · Recruiting Members
-            </p>
-          </div>
+          <p className="mt-3 text-sm text-cyan-100/75">
+            Pioneering the future of drone innovation, one flight at a time.
+          </p>
         </div>
 
         <div>
-          <p className="mb-3 font-display text-xs uppercase tracking-[0.24em] text-cyan-200">Club</p>
-          <div className="flex flex-col gap-2">
-            {quickLinks.map((item) => (
-              <a key={item.label} href={item.href} className="scan-link text-sm text-cyan-100/80 hover:text-cyan-100">
-                {item.label}
-              </a>
-            ))}
-          </div>
+          <img src={nieLogoSrc} alt="NIE Mysuru" className="mb-3 h-12 w-auto rounded bg-white/95 p-1" />
+          <p className="font-display text-base uppercase tracking-[0.2em] text-cyan-200">NIE Mysuru</p>
+          <p className="mt-2 text-sm text-cyan-100/75">The National Institute of Engineering, Mysuru</p>
         </div>
 
-        <div>
-          <p className="mb-3 font-display text-xs uppercase tracking-[0.24em] text-cyan-200">Committee</p>
-          <div className="flex flex-col gap-2">
-            {committeeLinks.map((item) => (
-              <a key={item.label} href={item.href} className="scan-link text-sm text-cyan-100/80 hover:text-cyan-100">
-                {item.label}
-              </a>
-            ))}
+        <div className="grid gap-8 sm:grid-cols-2">
+          <div>
+            <p className="mb-3 font-display text-xs uppercase tracking-[0.24em] text-cyan-200">Quick Links</p>
+            <div className="flex flex-col gap-2">
+              {quickLinks.map((item) => (
+                <a key={item.label} href={item.href} className="scan-link text-sm text-cyan-100/80 hover:text-cyan-100">
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <p className="mb-3 font-display text-xs uppercase tracking-[0.24em] text-cyan-200">Connect</p>
-          <div className="flex flex-col gap-2">
-            {connectLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target={item.href.startsWith('http') ? '_blank' : undefined}
-                rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-                className="scan-link text-sm text-cyan-100/80 hover:text-cyan-100"
-              >
-                {item.label}
-              </a>
-            ))}
+          <div>
+            <p className="mb-3 font-display text-xs uppercase tracking-[0.24em] text-cyan-200">Get Involved</p>
+            <div className="flex flex-col gap-2">
+              {getInvolvedLinks.map((item) => (
+                <a key={item.label} href={item.href} className="scan-link text-sm text-cyan-100/80 hover:text-cyan-100">
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

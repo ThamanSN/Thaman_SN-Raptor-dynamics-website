@@ -180,7 +180,8 @@ export function HeroSection({ onLaunch }: HeroSectionProps) {
           transition={{ delay: 0.85, duration: 0.8 }}
           className="hero-ticker-wrap mt-10 w-full max-w-5xl overflow-hidden rounded-full border border-cyan-300/30 bg-[#071226]/70"
         >
-          <div className="hero-ticker-track font-display text-xs uppercase tracking-[0.22em] text-cyan-100/85">
+          <div className="hero-ticker-track whitespace-nowrap font-display text-xs uppercase tracking-[0.22em] text-cyan-100/85">
+            <span>{tickerText}</span>
             <span>{tickerText}</span>
             <span>{tickerText}</span>
           </div>

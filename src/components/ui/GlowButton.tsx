@@ -17,12 +17,12 @@ export function GlowButton({
   const [ripple, setRipple] = useState({ x: 0, y: 0, active: false })
 
   const base =
-    'relative overflow-hidden rounded-full px-7 py-3 font-display text-sm uppercase tracking-[0.22em] transition duration-300 active:scale-[0.98]'
+    'neon-button relative overflow-hidden rounded-full px-7 py-3 font-display text-sm uppercase tracking-[0.22em] active:scale-[0.98]'
 
   const style =
     variant === 'primary'
-      ? 'bg-cyan-300/15 text-cyan-100 border border-cyan-300/50 shadow-neon hover:bg-cyan-200/20'
-      : 'bg-violet-400/10 text-violet-100 border border-violet-300/50 shadow-violet hover:bg-violet-300/20'
+      ? 'soft-blue-shadow bg-cyan-300/15 text-cyan-100 border border-cyan-300/50 hover:bg-cyan-200/20'
+      : 'soft-blue-shadow neon-button-soft bg-violet-400/10 text-violet-100 border border-violet-300/45 hover:bg-violet-300/18'
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect()
