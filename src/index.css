@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: radial-gradient(circle at 10% 5%, #121d45 0%, #060914 55%, #03050d 100%);
+  color: #d8f6ff;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 25% 20%, rgba(47, 184, 255, 0.25), transparent 40%),
+    radial-gradient(circle at 78% 0%, rgba(159, 107, 255, 0.2), transparent 35%),
+    radial-gradient(circle at 60% 85%, rgba(88, 242, 255, 0.16), transparent 38%);
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(160, 230, 255, 0.04) 0px,
+    rgba(160, 230, 255, 0.04) 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  mix-blend-mode: screen;
+  opacity: 0.25;
+  animation: scanDrift 7s linear infinite;
+  z-index: 1;
+}
+
+.hud-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(47, 184, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 184, 255, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.radar-orb {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 9999px;
+  border: 1px solid rgba(88, 242, 255, 0.35);
+  box-shadow: 0 0 65px rgba(88, 242, 255, 0.2);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.radar-orb::before {
+  content: '';
+  position: absolute;
+  inset: 12%;
+  border-radius: 9999px;
+  border: 1px solid rgba(47, 184, 255, 0.35);
+}
+
+.radar-orb::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 1px;
+  left: 50%;
+  top: 50%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, rgba(88, 242, 255, 0.95), transparent);
+  animation: radarSweep 8s linear infinite;
+}
+
+.sky-haze {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  filter: blur(34px);
+}
+
+.sky-haze-1 {
+  background: radial-gradient(circle at 20% 26%, rgba(114, 188, 255, 0.45), transparent 43%);
+  animation: hazeDriftOne 20s ease-in-out infinite alternate;
+}
+
+.sky-haze-2 {
+  background: radial-gradient(circle at 72% 16%, rgba(152, 126, 255, 0.32), transparent 37%);
+  animation: hazeDriftTwo 24s ease-in-out infinite alternate;
+}
+
+.sky-haze-3 {
+  background: radial-gradient(circle at 45% 74%, rgba(88, 242, 255, 0.24), transparent 44%);
+  animation: hazeDriftThree 28s ease-in-out infinite alternate;
+}
+
+.sky-cloud {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(200, 230, 255, 0.25), rgba(130, 170, 230, 0.05));
+  filter: blur(18px);
+}
+
+.cloud-a {
+  width: 420px;
+  height: 140px;
+  top: 16%;
+  left: -20%;
+  animation: cloudDriftA 38s linear infinite;
+}
+
+.cloud-b {
+  width: 520px;
+  height: 170px;
+  top: 42%;
+  left: -35%;
+  animation: cloudDriftB 46s linear infinite;
+}
+
+.cloud-c {
+  width: 360px;
+  height: 120px;
+  top: 62%;
+  left: -30%;
+  animation: cloudDriftC 34s linear infinite;
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  background: linear-gradient(120deg, rgba(9, 17, 37, 0.82), rgba(9, 18, 37, 0.46));
+  border: 1px solid rgba(88, 242, 255, 0.3);
+  box-shadow: 0 0 24px rgba(47, 184, 255, 0.2);
+}
+
+.glitch-text {
+  position: relative;
+  text-shadow: 0 0 12px rgba(88, 242, 255, 0.3);
+  animation: glitchShift 4.8s infinite;
+}
+
+.scan-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-link::after {
+  content: '';
+  position: absolute;
+  left: -110%;
+  bottom: 0;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(88, 242, 255, 0.9), transparent);
+  transition: transform 0.45s ease;
+}
+
+.scan-link:hover::after {
+  transform: translateX(240%);
+}
+
+.launch-pulse {
+  animation: launchPulse 0.55s ease;
+}
+
+.raptor-mode {
+  filter: saturate(1.25) hue-rotate(8deg);
+}
+
+.tagline-anim {
+  animation: taglinePulse 3.2s ease-in-out infinite;
+}
+
+.vision-grid-wrap {
+  position: relative;
+}
+
+.vision-moving-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image: linear-gradient(rgba(78, 204, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(78, 204, 255, 0.14) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridSlide 10s linear infinite;
+}
+
+.vision-underline {
+  position: relative;
+  z-index: 10;
+  margin: 26px auto 0;
+  display: block;
+  width: min(320px, 72%);
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(84, 246, 255, 0), rgba(84, 246, 255, 0.9), rgba(151, 103, 255, 0));
+  animation: underlineGlow 2.6s ease-in-out infinite;
+}
+
+.mission-card,
+.objective-card,
+.institution-panel {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.mission-card:hover,
+.objective-card:hover,
+.institution-panel:hover {
+  border-color: rgba(106, 224, 255, 0.55);
+  box-shadow: 0 0 32px rgba(88, 242, 255, 0.18);
+}
+
+.objective-card:hover .objective-icon {
+  animation: iconFlicker 0.75s ease-in-out;
+}
+
+.drone-trail::after {
+  content: '';
+  position: absolute;
+  inset: auto 10% 6px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(88, 242, 255, 0.02), rgba(88, 242, 255, 0.48), rgba(88, 242, 255, 0.02));
+}
+
+.drone-sweep {
+  white-space: nowrap;
+}
+
+@keyframes scanDrift {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(18px);
+  }
+}
+
+@keyframes glitchShift {
+  0%,
+  92%,
+  100% {
+    transform: translateX(0);
+    filter: drop-shadow(0 0 0 rgba(95, 233, 255, 0));
+  }
+  93% {
+    transform: translateX(-1px);
+    filter: drop-shadow(2px 0 0 rgba(95, 233, 255, 0.5));
+  }
+  95% {
+    transform: translateX(1px);
+    filter: drop-shadow(-2px 0 0 rgba(190, 123, 255, 0.45));
+  }
+}
+
+@keyframes launchPulse {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px) translateY(1px);
+  }
+  40% {
+    transform: translateX(5px) translateY(-1px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes taglinePulse {
+  0%,
+  100% {
+    text-shadow: 0 0 8px rgba(120, 228, 255, 0.2);
+    opacity: 0.8;
+  }
+  50% {
+    text-shadow: 0 0 14px rgba(120, 228, 255, 0.55);
+    opacity: 1;
+  }
+}
+
+@keyframes gridSlide {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 0 40px, 40px 0;
+  }
+}
+
+@keyframes underlineGlow {
+  0%,
+  100% {
+    transform: scaleX(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleX(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes iconFlicker {
+  0%,
+  100% {
+    transform: translateX(0);
+    filter: drop-shadow(0 0 0 rgba(95, 233, 255, 0));
+  }
+  50% {
+    transform: translateX(1px);
+    filter: drop-shadow(0 0 8px rgba(95, 233, 255, 0.7));
+  }
+}
+
+@keyframes hazeDriftOne {
+  0% {
+    transform: translate3d(-1%, -2%, 0);
+  }
+  100% {
+    transform: translate3d(2%, 1%, 0);
+  }
+}
+
+@keyframes hazeDriftTwo {
+  0% {
+    transform: translate3d(2%, -1%, 0);
+  }
+  100% {
+    transform: translate3d(-2%, 2%, 0);
+  }
+}
+
+@keyframes hazeDriftThree {
+  0% {
+    transform: translate3d(0%, 2%, 0);
+  }
+  100% {
+    transform: translate3d(1.5%, -2%, 0);
+  }
+}
+
+@keyframes cloudDriftA {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(155%);
+  }
+}
+
+@keyframes cloudDriftB {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(175%);
+  }
+}
+
+@keyframes cloudDriftC {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(165%);
+  }
+}
