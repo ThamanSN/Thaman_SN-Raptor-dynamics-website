@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Raptor-dynamics-website/',
+  base: '/Thaman_SN-Raptor-dynamics-website/',
   plugins: [react()],
 })
