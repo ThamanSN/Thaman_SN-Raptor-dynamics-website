@@ -36,7 +36,7 @@ export function HudOverlay() {
   ]
 
   return (
-    <div className="pointer-events-none absolute inset-x-4 top-4 z-[14] grid gap-3 sm:grid-cols-4">
+    <div className="pointer-events-none absolute inset-x-4 top-4 z-[14] grid grid-cols-2 gap-3 sm:grid-cols-4">
       {items.map((item) => (
         <div key={item.label} className="rounded-lg border border-cyan-300/35 bg-[#071126]/55 px-3 py-2 backdrop-blur-sm">
           <p className="text-[10px] font-display uppercase tracking-[0.2em] text-cyan-300/90">{item.label}</p>

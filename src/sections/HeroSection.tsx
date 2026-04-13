@@ -68,7 +68,7 @@ export function HeroSection({ onLaunch }: HeroSectionProps) {
   }
 
   return (
-    <section className="relative isolate min-h-screen overflow-hidden px-5 pb-20 pt-32 sm:px-8 lg:px-12">
+    <section className="relative isolate min-h-screen overflow-hidden px-5 pb-20 pt-44 sm:px-8 sm:pt-32 lg:px-12">
       <SkyLayer2D />
       <div className="hud-grid-bg" />
       <div className="radar-orb left-[-10%] top-[10%]" />
