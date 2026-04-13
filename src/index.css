@@ -370,6 +370,20 @@ body::after {
   filter: drop-shadow(0 0 20px rgba(85, 230, 255, 0.5));
 }
 
+.takeoff-trail {
+  width: 26px;
+  height: 88px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 233, 185, 0.88) 0%,
+    rgba(255, 182, 77, 0.65) 42%,
+    rgba(85, 230, 255, 0.2) 100%
+  );
+  filter: blur(2px);
+  transform-origin: top center;
+}
+
 .takeoff-particle {
   position: absolute;
   bottom: 22px;

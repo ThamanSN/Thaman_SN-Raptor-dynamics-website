@@ -35,7 +35,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
     const doneTimer = window.setTimeout(() => {
       onComplete()
-    }, 4800)
+    }, 5600)
 
     return () => {
       window.clearInterval(countdownInterval)
@@ -71,23 +71,39 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
             </>
           )}
 
-          <motion.div
-            className={`absolute left-1/2 top-[58%] h-[24px] w-[74px] -translate-x-1/2 rounded-full border border-cyan-200/60 bg-gradient-to-r from-cyan-300/55 via-cyan-100/75 to-amber-300/55 ${phase === 'takeoff' ? 'drone-takeoff-blur' : ''}`}
-            animate={
-              phase === 'countdown'
-                ? { y: [0, -1.5, 0], scale: [1, 1.03, 1] }
-                : { y: [-6, -95], scale: [1, 0.94], opacity: [1, 0.84] }
-            }
-            transition={
-              phase === 'countdown'
-                ? { duration: 0.32, repeat: Infinity, ease: 'easeInOut' }
-                : { duration: 1.35, ease: [0.15, 0.78, 0.22, 1] }
-            }
-          >
-            <span className="absolute -left-3 top-[2px] h-5 w-5 rounded-full border border-cyan-100/60" />
-            <span className="absolute -right-3 top-[2px] h-5 w-5 rounded-full border border-cyan-100/60" />
-            <span className="absolute left-1/2 top-1/2 h-[8px] w-[32px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-50/80" />
-          </motion.div>
+          {phase === 'countdown' && (
+            <motion.div
+              className="absolute left-1/2 top-[58%] h-[24px] w-[74px] -translate-x-1/2 rounded-full border border-cyan-200/60 bg-gradient-to-r from-cyan-300/55 via-cyan-100/75 to-amber-300/55"
+              animate={{ y: [0, -2.5, 0], scale: [1, 1.035, 1] }}
+              transition={{ duration: 0.34, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <span className="absolute -left-3 top-[2px] h-5 w-5 rounded-full border border-cyan-100/60" />
+              <span className="absolute -right-3 top-[2px] h-5 w-5 rounded-full border border-cyan-100/60" />
+              <span className="absolute left-1/2 top-1/2 h-[8px] w-[32px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-50/80" />
+            </motion.div>
+          )}
+
+          {phase === 'takeoff' && (
+            <>
+              <motion.div
+                className="takeoff-trail absolute left-1/2 top-[58%] -translate-x-1/2"
+                initial={{ opacity: 0, scaleY: 0.75 }}
+                animate={{ opacity: [0.15, 0.7, 0.2], scaleY: [0.75, 1.15, 1] }}
+                transition={{ duration: 1.1, ease: 'easeOut' }}
+              />
+
+              <motion.div
+                className="drone-takeoff-blur absolute left-1/2 top-[58%] h-[24px] w-[74px] -translate-x-1/2 rounded-full border border-cyan-100/70 bg-gradient-to-r from-cyan-300/80 via-cyan-100/95 to-amber-300/80"
+                initial={{ y: 0, scale: 1, opacity: 1 }}
+                animate={{ y: -132, scale: 0.82, opacity: 0.7 }}
+                transition={{ duration: 1.75, ease: [0.14, 0.8, 0.24, 1] }}
+              >
+                <span className="absolute -left-3 top-[2px] h-5 w-5 rounded-full border border-cyan-50/80" />
+                <span className="absolute -right-3 top-[2px] h-5 w-5 rounded-full border border-cyan-50/80" />
+                <span className="absolute left-1/2 top-1/2 h-[8px] w-[32px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-50" />
+              </motion.div>
+            </>
+          )}
 
           <div className="absolute bottom-3 left-3 right-3 h-2 overflow-hidden rounded-full border border-cyan-300/30 bg-black/40">
             <motion.div
