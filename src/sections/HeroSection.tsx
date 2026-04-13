@@ -9,6 +9,7 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ onLaunch }: HeroSectionProps) {
+  const clubLogoSrc = `${import.meta.env.BASE_URL}club-logo.jpeg.jpeg`
   const [offset, setOffset] = useState({ x: 0, y: 0 })
   const [audioEnabled, setAudioEnabled] = useState(false)
   const audioContextRef = useRef<AudioContext | null>(null)
@@ -93,7 +94,7 @@ export function HeroSection({ onLaunch }: HeroSectionProps) {
           initial={{ opacity: 0, y: 14, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: [0.88, 1.15, 1.05] }}
           transition={{ delay: 0.12, duration: 1.2, times: [0, 0.7, 1] }}
-          src="/club-logo.jpeg.jpeg"
+          src={clubLogoSrc}
           alt="Raptor Dynamics Club Logo"
           className="mb-6 h-28 w-28 rounded-xl border border-cyan-300/45 bg-black/35 p-1.5 shadow-neon sm:h-32 sm:w-32"
         />

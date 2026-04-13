@@ -1,12 +1,13 @@
 export function SiteFooter() {
   const links = ['IG', 'IN', 'YT']
+  const clubLogoSrc = `${import.meta.env.BASE_URL}club-logo.jpeg.jpeg`
 
   return (
     <footer className="relative z-10 border-t border-cyan-300/20 bg-black/30 px-5 py-10 backdrop-blur-md sm:px-8 lg:px-12">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-5 sm:flex-row">
         <div>
           <img
-            src="/club-logo.jpeg.jpeg"
+            src={clubLogoSrc}
             alt="Raptor Dynamics Club Logo"
             className="mb-2 h-10 w-10 rounded-md border border-cyan-300/35 bg-black/35 p-1"
           />
