@@ -118,9 +118,9 @@ export function HeroSection({ onLaunch }: HeroSectionProps) {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.7 }}
-          className="mt-5 max-w-4xl font-display text-5xl leading-[1.08] text-white sm:text-6xl lg:text-7xl"
+          className="hero-title-glow mt-5 max-w-4xl font-display text-5xl uppercase leading-[1.08] tracking-[0.08em] text-white sm:text-6xl lg:text-7xl"
         >
-          Raptor Dynamics
+          RAPTOR DYNAMICS
         </motion.h1>
 
         <motion.p

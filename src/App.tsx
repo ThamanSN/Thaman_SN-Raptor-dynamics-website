@@ -24,11 +24,6 @@ function App() {
   const keyBufferRef = useRef('')
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setLoading(false), 3600)
-    return () => window.clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
     const lenis = new Lenis({
       autoRaf: true,
       duration: 1.2,
@@ -90,7 +85,7 @@ function App() {
   return (
     <div className={`relative overflow-x-hidden bg-night text-white ${launchPulse ? 'launch-pulse' : ''} ${raptorMode ? 'raptor-mode' : ''}`}>
       {/* Cinematic boot splash for command-center feel */}
-      <AnimatePresence>{loading && <LoadingScreen />}</AnimatePresence>
+      <AnimatePresence>{loading && <LoadingScreen onComplete={() => setLoading(false)} />}</AnimatePresence>
       <CursorGlow />
       <ParticleField />
 

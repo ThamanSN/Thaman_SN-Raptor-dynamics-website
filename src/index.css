@@ -6,6 +6,10 @@
 
 :root {
   color-scheme: dark;
+  --tone-cyan: #55e6ff;
+  --tone-amber: #ffb347;
+  --tone-cyan-soft: rgba(85, 230, 255, 0.28);
+  --tone-amber-soft: rgba(255, 179, 71, 0.24);
 }
 
 * {
@@ -21,7 +25,7 @@ body,
 
 body {
   font-family: 'Rajdhani', sans-serif;
-  background: radial-gradient(circle at 10% 5%, #121d45 0%, #060914 55%, #03050d 100%);
+  background: radial-gradient(circle at 10% 5%, #12253d 0%, #08111d 54%, #04070d 100%);
   color: #d8f6ff;
   overflow-x: hidden;
 }
@@ -32,9 +36,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(circle at 25% 20%, rgba(47, 184, 255, 0.25), transparent 40%),
-    radial-gradient(circle at 78% 0%, rgba(159, 107, 255, 0.2), transparent 35%),
-    radial-gradient(circle at 60% 85%, rgba(88, 242, 255, 0.16), transparent 38%);
+    radial-gradient(circle at 25% 20%, var(--tone-cyan-soft), transparent 40%),
+    radial-gradient(circle at 78% 0%, var(--tone-amber-soft), transparent 35%),
+    radial-gradient(circle at 60% 85%, rgba(85, 230, 255, 0.18), transparent 38%);
   z-index: 0;
 }
 
@@ -105,13 +109,65 @@ body::after {
   filter: blur(34px);
 }
 
+.sky-gradient-shift {
+  position: absolute;
+  inset: -18% -10% 0;
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at 15% 24%, rgba(85, 230, 255, 0.25), transparent 42%),
+    radial-gradient(circle at 80% 18%, rgba(255, 179, 71, 0.2), transparent 35%),
+    radial-gradient(circle at 58% 72%, rgba(85, 230, 255, 0.18), transparent 42%);
+  animation: skyGradientShift 24s ease-in-out infinite alternate;
+}
+
+.sky-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  background-image:
+    radial-gradient(circle at 12% 20%, rgba(224, 248, 255, 0.8) 1px, transparent 2px),
+    radial-gradient(circle at 77% 10%, rgba(224, 248, 255, 0.65) 1px, transparent 2px),
+    radial-gradient(circle at 65% 36%, rgba(224, 248, 255, 0.55) 1px, transparent 2px),
+    radial-gradient(circle at 44% 16%, rgba(255, 230, 193, 0.65) 1px, transparent 2px),
+    radial-gradient(circle at 85% 48%, rgba(224, 248, 255, 0.55) 1px, transparent 2px),
+    radial-gradient(circle at 28% 42%, rgba(224, 248, 255, 0.5) 1px, transparent 2px),
+    radial-gradient(circle at 72% 64%, rgba(255, 230, 193, 0.55) 1px, transparent 2px),
+    radial-gradient(circle at 18% 70%, rgba(224, 248, 255, 0.5) 1px, transparent 2px);
+  animation: starTwinkle 4.8s ease-in-out infinite;
+}
+
+.sky-streak {
+  position: absolute;
+  width: 46%;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(85, 230, 255, 0), rgba(85, 230, 255, 0.65), rgba(255, 179, 71, 0));
+  filter: blur(1px);
+  opacity: 0.45;
+}
+
+.sky-streak-a {
+  top: 22%;
+  left: -38%;
+  transform: rotate(-6deg);
+  animation: skyStreakA 10s linear infinite;
+}
+
+.sky-streak-b {
+  top: 38%;
+  left: -44%;
+  transform: rotate(-9deg);
+  opacity: 0.3;
+  animation: skyStreakB 14s linear infinite;
+}
+
 .sky-haze-1 {
   background: radial-gradient(circle at 20% 26%, rgba(114, 188, 255, 0.45), transparent 43%);
   animation: hazeDriftOne 20s ease-in-out infinite alternate;
 }
 
 .sky-haze-2 {
-  background: radial-gradient(circle at 72% 16%, rgba(152, 126, 255, 0.32), transparent 37%);
+  background: radial-gradient(circle at 72% 16%, rgba(255, 179, 71, 0.28), transparent 37%);
   animation: hazeDriftTwo 24s ease-in-out infinite alternate;
 }
 
@@ -160,8 +216,36 @@ body::after {
 
 .glitch-text {
   position: relative;
-  text-shadow: 0 0 12px rgba(88, 242, 255, 0.3);
+  text-shadow: 0 0 12px rgba(85, 230, 255, 0.32);
   animation: glitchShift 4.8s infinite;
+}
+
+.heading-ripple {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+.heading-ripple::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  background: linear-gradient(
+    100deg,
+    rgba(85, 230, 255, 0) 0%,
+    rgba(85, 230, 255, 0) 35%,
+    rgba(255, 179, 71, 0.95) 50%,
+    rgba(85, 230, 255, 0) 65%,
+    rgba(85, 230, 255, 0) 100%
+  );
+  background-size: 260% 100%;
+  background-position: -135% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: headingRipple 3.8s linear infinite;
 }
 
 .scan-link {
@@ -218,7 +302,7 @@ body::after {
   width: min(320px, 72%);
   height: 3px;
   border-radius: 999px;
-  background: linear-gradient(90deg, rgba(84, 246, 255, 0), rgba(84, 246, 255, 0.9), rgba(151, 103, 255, 0));
+  background: linear-gradient(90deg, rgba(85, 230, 255, 0), rgba(85, 230, 255, 0.95), rgba(255, 179, 71, 0));
   animation: underlineGlow 2.6s ease-in-out infinite;
 }
 
@@ -251,12 +335,72 @@ body::after {
   white-space: nowrap;
 }
 
+.hero-title-glow {
+  position: relative;
+  display: inline-block;
+  color: #f1fdff;
+  letter-spacing: 0.09em;
+  text-shadow:
+    0 0 8px rgba(85, 230, 255, 0.42),
+    0 0 18px rgba(85, 230, 255, 0.24),
+    0 0 28px rgba(255, 179, 71, 0.16);
+  animation: titleNeonPulse 4.2s ease-in-out infinite;
+}
+
+.hero-title-glow::before {
+  content: none;
+}
+
+.hero-title-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(108deg, rgba(255, 255, 255, 0) 0%, rgba(255, 208, 122, 0.58) 50%, rgba(255, 255, 255, 0) 100%);
+  background-size: 230% 100%;
+  background-position: -120% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: titleLightTravel 5.2s ease-in-out infinite;
+}
+
+.drone-takeoff-blur {
+  filter: drop-shadow(0 0 20px rgba(85, 230, 255, 0.5));
+}
+
+.takeoff-particle {
+  position: absolute;
+  bottom: 22px;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 210, 136, 0.95), rgba(85, 230, 255, 0.15));
+  animation: particleBurst 0.85s ease-out infinite;
+  box-shadow: 0 0 10px rgba(255, 191, 97, 0.7);
+}
+
 @keyframes scanDrift {
   0% {
     transform: translateY(-10px);
   }
   100% {
     transform: translateY(18px);
+  }
+}
+
+@keyframes radarSweep {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.25;
   }
 }
 
@@ -273,7 +417,77 @@ body::after {
   }
   95% {
     transform: translateX(1px);
-    filter: drop-shadow(-2px 0 0 rgba(190, 123, 255, 0.45));
+    filter: drop-shadow(-2px 0 0 rgba(255, 179, 71, 0.45));
+  }
+}
+
+@keyframes headingRipple {
+  0% {
+    background-position: -135% 50%;
+    opacity: 0.18;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  50% {
+    background-position: 0% 50%;
+    opacity: 0.95;
+  }
+  85% {
+    opacity: 0.72;
+  }
+  100% {
+    background-position: 135% 50%;
+    opacity: 0.2;
+  }
+}
+
+@keyframes particleBurst {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(0, 42px, 0) scale(0.15);
+    opacity: 0;
+  }
+}
+
+@keyframes titleNeonPulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 8px rgba(85, 230, 255, 0.42),
+      0 0 18px rgba(85, 230, 255, 0.24),
+      0 0 28px rgba(255, 179, 71, 0.16);
+    transform: translateZ(0);
+  }
+  50% {
+    text-shadow:
+      0 0 10px rgba(85, 230, 255, 0.58),
+      0 0 22px rgba(85, 230, 255, 0.32),
+      0 0 32px rgba(255, 179, 71, 0.22);
+  }
+}
+
+@keyframes titleLightTravel {
+  0% {
+    background-position: -120% 50%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.4;
+  }
+  50% {
+    background-position: 0% 50%;
+    opacity: 0.7;
+  }
+  82% {
+    opacity: 0.4;
+  }
+  100% {
+    background-position: 120% 50%;
+    opacity: 0;
   }
 }
 
@@ -349,6 +563,56 @@ body::after {
   }
   100% {
     transform: translate3d(2%, 1%, 0);
+  }
+}
+
+@keyframes skyGradientShift {
+  0% {
+    transform: translate3d(-2%, -2%, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(2%, 2%, 0) scale(1.08);
+  }
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    opacity: 0.26;
+  }
+  40% {
+    opacity: 0.52;
+  }
+  65% {
+    opacity: 0.34;
+  }
+}
+
+@keyframes skyStreakA {
+  0% {
+    transform: translateX(0) rotate(-6deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(310%) rotate(-6deg);
+    opacity: 0;
+  }
+}
+
+@keyframes skyStreakB {
+  0% {
+    transform: translateX(0) rotate(-9deg);
+    opacity: 0;
+  }
+  16% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(332%) rotate(-9deg);
+    opacity: 0;
   }
 }
 
