@@ -4,6 +4,7 @@ import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { LoadingScreen } from './components/effects/LoadingScreen'
+import { PostLoadLogoReveal } from './components/effects/PostLoadLogoReveal'
 import { CursorGlow } from './components/effects/CursorGlow'
 import { ParticleField } from './components/effects/ParticleField'
 import { HeroSection } from './sections/HeroSection'
@@ -19,6 +20,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 function App() {
   const [loading, setLoading] = useState(true)
+  const [showPostReveal, setShowPostReveal] = useState(false)
   const [launchPulse, setLaunchPulse] = useState(false)
   const [raptorMode, setRaptorMode] = useState(false)
   const keyBufferRef = useRef('')
@@ -85,7 +87,17 @@ function App() {
   return (
     <div className={`relative overflow-x-hidden bg-night text-white ${launchPulse ? 'launch-pulse' : ''} ${raptorMode ? 'raptor-mode' : ''}`}>
       {/* Cinematic boot splash for command-center feel */}
-      <AnimatePresence>{loading && <LoadingScreen onComplete={() => setLoading(false)} />}</AnimatePresence>
+      <AnimatePresence>
+        {loading && (
+          <LoadingScreen
+            onComplete={() => {
+              setLoading(false)
+              setShowPostReveal(true)
+            }}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>{showPostReveal && <PostLoadLogoReveal onComplete={() => setShowPostReveal(false)} />}</AnimatePresence>
       <CursorGlow />
       <ParticleField />
 

@@ -347,6 +347,106 @@ body::after {
   animation: launchPulse 0.55s ease;
 }
 
+.projector-bg-gradient {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 245, 255, 0.22), rgba(0, 245, 255, 0) 46%),
+    radial-gradient(circle at 20% 30%, rgba(118, 189, 255, 0.2), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255, 180, 80, 0.13), transparent 35%);
+}
+
+.projector-stage {
+  --reveal-x: 50%;
+  --reveal-y: 62%;
+  --drone-y: 56px;
+  --drone-width: 84px;
+  margin: 0 auto;
+}
+
+.projector-drone {
+  position: absolute;
+  left: var(--reveal-x);
+  top: var(--drone-y);
+  transform: translateX(-50%);
+  width: 84px;
+  height: 22px;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 240, 255, 0.8);
+  background: linear-gradient(90deg, rgba(84, 212, 255, 0.78), rgba(235, 250, 255, 0.9), rgba(84, 212, 255, 0.78));
+  box-shadow:
+    0 0 14px rgba(84, 212, 255, 0.72),
+    0 0 32px rgba(84, 212, 255, 0.28);
+  z-index: 12;
+}
+.projector-arm {
+  position: absolute;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(148, 240, 255, 0.8);
+}
+
+.projector-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 8px;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  background: rgba(236, 251, 255, 0.95);
+}
+
+.projector-beam {
+  position: absolute;
+  top: calc(var(--drone-y) + 22px);
+  left: var(--reveal-x);
+  width: min(52vw, 290px);
+  height: 235px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(0, 245, 255, 0.36), rgba(0, 245, 255, 0.07) 62%, rgba(0, 245, 255, 0));
+  clip-path: polygon(48% 0%, 52% 0%, 100% 100%, 0% 100%);
+  filter: blur(0.5px);
+  transform-origin: top center;
+  z-index: 10;
+}
+
+.projector-center {
+  position: absolute;
+  left: var(--reveal-x);
+  top: var(--reveal-y);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  z-index: 14;
+}
+
+.projector-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 245, 255, 0.5);
+}
+
+.projector-ring-a {
+  width: 220px;
+  height: 220px;
+}
+
+.projector-ring-b {
+  width: 270px;
+  height: 270px;
+  border-color: rgba(0, 245, 255, 0.32);
+}
+
+.projector-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--reveal-x) var(--reveal-y), rgba(178, 246, 255, 0.62), rgba(178, 246, 255, 0.12) 35%, transparent 60%);
+  pointer-events: none;
+}
+
 .raptor-mode {
   filter: saturate(1.25) hue-rotate(8deg);
 }
@@ -482,6 +582,79 @@ body::after {
   box-shadow: 0 0 10px rgba(255, 191, 97, 0.7);
 }
 
+.logo-reveal-glow {
+  background: radial-gradient(circle, rgba(0, 245, 255, 0.35), rgba(0, 245, 255, 0.06) 55%, transparent 72%);
+  box-shadow:
+    0 0 18px rgba(0, 245, 255, 0.6),
+    0 0 36px rgba(0, 245, 255, 0.34),
+    0 0 56px rgba(0, 245, 255, 0.18);
+  animation: logoRevealPulse 1.6s ease-in-out infinite;
+}
+
+.logo-reveal-drone {
+  top: -46px;
+  width: 72px;
+  height: 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 240, 255, 0.78);
+  background: linear-gradient(90deg, rgba(84, 212, 255, 0.72), rgba(236, 251, 255, 0.9), rgba(84, 212, 255, 0.72));
+  box-shadow:
+    0 0 10px rgba(0, 245, 255, 0.55),
+    0 0 24px rgba(0, 245, 255, 0.26);
+  z-index: 16;
+}
+
+.logo-reveal-drone-arm {
+  position: absolute;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(148, 240, 255, 0.78);
+}
+
+.logo-reveal-drone-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: rgba(236, 251, 255, 0.96);
+}
+
+.logo-reveal-beam {
+  top: -28px;
+  width: 180px;
+  height: 115px;
+  background: linear-gradient(180deg, rgba(0, 245, 255, 0.38), rgba(0, 245, 255, 0.08) 62%, rgba(0, 245, 255, 0));
+  clip-path: polygon(47% 0%, 53% 0%, 100% 100%, 0% 100%);
+  filter: blur(0.45px);
+  transform-origin: top center;
+  z-index: 12;
+}
+
+.logo-reveal-noise {
+  opacity: 0.22;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(120, 220, 255, 0.06) 0px,
+      rgba(120, 220, 255, 0.06) 1px,
+      transparent 2px,
+      transparent 5px
+    );
+  animation: revealNoiseShift 1.3s linear infinite;
+}
+
+.logo-hologram {
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 14px rgba(0, 245, 255, 0.74));
+}
+
 @keyframes scanDrift {
   0% {
     transform: translateY(-10px);
@@ -569,6 +742,27 @@ body::after {
   100% {
     transform: translate3d(0, 42px, 0) scale(0.15);
     opacity: 0;
+  }
+}
+
+@keyframes logoRevealPulse {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes revealNoiseShift {
+  0% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(8px);
   }
 }
 
